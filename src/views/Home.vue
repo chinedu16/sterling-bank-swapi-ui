@@ -85,21 +85,21 @@
       <div class="planets-container">
         <div class="planet">
           <img src="../assets/planet-1.jpg" alt="" class="planet__image">
-          <p class="planet__name">Corellia</p>  
+          <p class="planet__name">{{planets[0].name}}</p>  
         </div>
 
         <div class="planet">
-          <img src="../assets/planet-1.jpg" alt="" class="planet__image">
-          <p class="planet__name">Corellia</p>  
+          <img src="../assets/planet-2.jpg" alt="" class="planet__image">
+          <p class="planet__name">{{planets[1].name}}</p>  
         </div>
 
         <div class="planet">
-          <img src="../assets/planet-1.jpg" alt="" class="planet__image">
-          <p class="planet__name">Corellia</p>  
+          <img src="../assets/planet-3.jpg" alt="" class="planet__image">
+          <p class="planet__name">{{planets[2].name}}</p>  
         </div>
       </div>
 
-      <div class="button__view-more">
+      <div class="button__view-more" @click="planet">
         view more
       </div>
 
@@ -173,7 +173,8 @@ export default {
   data: function () {
     return {
       starships: '',
-      characters: ''
+      characters: '',
+      planets: ''
     }
   },
   components: {
@@ -185,6 +186,9 @@ export default {
     },
     starship: function () {
       this.$router.push({path: '/starship'})
+    },
+    planet: function () {
+      this.$router.push({path: '/planet'})
     },
     async listStarship () {
       try {
@@ -202,6 +206,14 @@ export default {
         console.log(error)
       }
     },
+    async listPlanet () {
+      try {
+        const response = await API.listPlanet()
+        this.planets = response.data.results
+      } catch (error) {
+        console.log(error)
+      }
+    },
     shipDetail: function (param) {
       this.$router.push({name: 'starship-details', params: param})
     },
@@ -212,6 +224,7 @@ export default {
   created () {
     this.listStarship()
     this.listCharacter()
+    this.listPlanet()
   }
   
 }
