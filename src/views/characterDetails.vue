@@ -1,4 +1,3 @@
-
 <template>
   <div class="starship-1">
     <header class="header">
@@ -27,13 +26,10 @@
 
         <p class="starship__main-description">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, sapiente culpa possimus consectetur maxime veniam dolorem et itaque laboriosam rem fuga voluptatem temporibus sed, mollitia aliquid. Officia ipsa minima velit.
-
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate quae, repellendus neque nam porro aliquid tempore, quis, debitis a ullam sapiente cumque facilis eveniet. Quos nihil minima quae iusto autem.
-
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero odio magni nostrum quo cupiditate ipsum doloribus doloremque nesciunt ratione impedit omnis non minima excepturi ducimus sint, consequatur atque itaque est?
-
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet, saepe necessitatibus nemo quas rerum libero recusandae inventore, eos repellat quos maxime repudiandae. Fuga repellat labore deleniti nesciunt nihil incidunt sequi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, repellat possimus? Voluptate nostrum sunt ullam atque assumenda quas velit quo in ab quae explicabo nulla, vel reprehenderit cumque modi dolorem!
-
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet, saepe necessitatibus nemo quas rerum libero recusandae inventore, eos repellat quos maxime repudiandae. Fuga repellat labore deleniti nesciunt nihil incidunt sequi! 
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, repellat possimus? Voluptate nostrum sunt ullam atque assumenda quas velit quo in ab quae explicabo nulla, vel reprehenderit cumque modi dolorem!
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores debitis natus, dolore quod necessitatibus voluptas at eum sit reiciendis quam fuga obcaecati ab! Exercitationem delectus eveniet inventore dolorum, esse harum.
         </p>
       </div>
@@ -52,35 +48,29 @@
           <div class="starship__summary">
             <p class="starship__name">Chinedu Ohagwu</p>
             <p class="starship__description">The Ghost is a modified VCX-100 light freighter, manufactured by the Corelian Engineering Corporation.</p>
-
             <button class="starship__button">Read More &nbsp; &rarr; </button>
           </div>
         </div>
 
         <div class="starship">
             <img src="../assets/character-2.jpg" class="starship__image">
-  
             <div class="starship__summary">
               <p class="starship__name">{{details.name}}</p>
               <p class="starship__description">The Ghost is a modified VCX-100 light freighter, manufactured by the Corelian Engineering Corporation.</p>
-  
               <button class="starship__button">Read More &nbsp; &rarr; </button>
             </div>
         </div>
 
         <div class="starship">
             <img src="../assets/character-3.jpg" class="starship__image">
-  
             <div class="starship__summary">
               <p class="starship__name">Ghost</p>
               <p class="starship__description">The Ghost is a modified VCX-100 light freighter, manufactured by the Corelian Engineering Corporation.</p>
-  
               <button class="starship__button">Read More &nbsp; &rarr; </button>
             </div>
         </div>
       </div>
     </main>
-
     <footer class="footer">
       &nbsp;
     </footer>
@@ -101,6 +91,5 @@ export default {
       this.$router.push({name: 'character'})
     }
   }
-  
 }
 </script>
