@@ -2,7 +2,7 @@
 <template>
   <div class="starship-1">
     <header class="header">
-      <img class="header__logo small-logo" src="../assets/logo.png" alt="">
+      <img class="header__logo small-logo" src="../assets/logo.png" @click="home" alt="">
       <img src="../assets/planet-2.jpg" alt="" class="header__bg">
 
       <div class="header__content">
@@ -13,8 +13,8 @@
 
           <div class="header__pagination">
             <ul class="header__pagination-controls">
-              <li class="header__pagination-arrow"></li>
-              <li class="header__pagination-arrow"></li>
+              <li class="header__pagination-arrow"><</li>
+              <li class="header__pagination-arrow">></li>
             </ul>
           </div>
         </div>
@@ -94,6 +94,11 @@ export default {
   data: function () {
     return {
       details: ''
+    }
+  },
+  methods: {
+     home: function () {
+      this.$router.push('/')
     }
   },
   created () {

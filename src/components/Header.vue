@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <img class="header__logo small-logo" src="../assets/logo.png" alt="">
+    <img class="header__logo small-logo" src="../assets/logo.png" @click="home" alt="">
     <img src="../assets/hero-banner.jpg" alt="" class="header__bg">
 
     <div class="header__content">
@@ -22,3 +22,18 @@
     </div>
   </header>
 </template>
+
+<script>
+export default {
+  name: 'header',
+  data: function () {
+    return {
+    }
+  },
+  methods: {
+    home: function () {
+      this.$router.push({path: '/'})
+    }
+  }
+}
+</script>
