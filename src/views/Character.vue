@@ -67,8 +67,8 @@
         </div>
 
         <ul class="pagination__controls" >
-          <li class="pagination__arrow" v-if="characters.previous" @click="prev(characters.previous)"><</li>
-          <li class="pagination__arrow" v-if="characters.next" @click="prev(characters.next)">></li>
+          <li class="pagination__arrow" v-if="characters.previous" @click="prev(characters.previous)"><i class="fas fa-chevron-left"></i></li>
+          <li class="pagination__arrow" v-if="characters.next" @click="prev(characters.next)"><i class="fas fa-chevron-right"></i></li>
         </ul>
       </div>
     </main>

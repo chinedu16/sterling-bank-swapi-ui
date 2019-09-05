@@ -49,8 +49,8 @@
         </div>
 
         <ul class="pagination__controls">
-          <li class="pagination__arrow" v-if="starships.previous" @click="prev(starships.previous)" ><</li>
-          <li class="pagination__arrow" v-if="starships.next" @click="next(starships.next)">></li>
+          <li class="pagination__arrow" v-if="starships.previous" @click="prev(starships.previous)" ><i class="fas fa-chevron-left"></i></li>
+          <li class="pagination__arrow" v-if="starships.next" @click="next(starships.next)"><i class="fas fa-chevron-right"></i></li>
         </ul>
       </div>    
 

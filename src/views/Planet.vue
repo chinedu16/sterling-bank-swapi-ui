@@ -49,8 +49,8 @@
         </div>
 
         <ul class="pagination__controls">
-          <li class="pagination__arrow" v-if="planets.previous" @click="prev(planets.previous)" ><</li>
-          <li class="pagination__arrow" v-if="planets.next" @click="next(planets.next)">></li>
+          <li class="pagination__arrow" v-if="planets.previous" @click="prev(planets.previous)" ><i class="fas fa-chevron-left"></i></li>
+          <li class="pagination__arrow" v-if="planets.next" @click="next(planets.next)"><i class="fas fa-chevron-right"></i></li>
         </ul>
       </div>    
 

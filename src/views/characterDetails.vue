@@ -12,8 +12,8 @@
 
           <div class="header__pagination">
             <ul class="header__pagination-controls">
-              <li class="header__pagination-arrow"><</li>
-              <li class="header__pagination-arrow">></li>
+              <li class="header__pagination-arrow"><i class="fas fa-chevron-left"></i></li>
+              <li class="header__pagination-arrow"><i class="fas fa-chevron-right"></i></li>
             </ul>
           </div>
         </div>
