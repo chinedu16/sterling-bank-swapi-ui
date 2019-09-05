@@ -63,7 +63,7 @@
       <p style="font-size: 2rem; font-weight: 500;" v-if="characters.results.length === 0 && loading === false">Empty</p>
       <div class="pagination" v-if="characters">
         <div class="pagination__text">
-          1-10 of {{characters.count}}
+          Page {{page}} of {{characters.count}} Pictures
         </div>
 
         <ul class="pagination__controls" >
@@ -88,7 +88,8 @@ export default {
       characters: [],
       loading: false,
       search: '',
-      gender: ''
+      gender: '',
+      page: 1
     }
   },
   
@@ -116,6 +117,8 @@ export default {
       try {
         const response = await API.characterNext(url)
         this.characters = response.data
+        let o = this.characters.next.split("=")
+        this.page = o[1] - 1
         this.loading = false
       } catch (error) {
         console.log(error)
@@ -128,6 +131,8 @@ export default {
       try {
         const response = await API.characterPrev(url)
         this.characters = response.data
+        let o = this.characters.previous.split("=")
+        this.page = o[1]
         this.loading = false
       } catch (error) {
         console.log(error)

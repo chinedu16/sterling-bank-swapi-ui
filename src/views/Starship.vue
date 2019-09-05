@@ -45,7 +45,7 @@
       <p style="font-size: 2rem; font-weight: 500;" v-if="starships.results.length === 0 && loading === false">Empty</p>
       <div class="pagination" v-if="starships">
         <div class="pagination__text">
-          1-10 of {{starships.count}}
+          Page {{page}} of {{starships.count}} Pictures
         </div>
 
         <ul class="pagination__controls">
@@ -70,7 +70,8 @@ export default {
     return {
       starships: [],
       loading: false,
-      search: ''
+      search: '',
+      page: 1
     }
   },
   methods: {
@@ -100,6 +101,8 @@ export default {
       try {
         const response = await API.starshipNext(url)
         this.starships = response.data
+        let o = this.starships.next.split("=")
+        this.page = o[1] - 1
         this.loading = false
       } catch (error) {
         console.log(error)
@@ -112,6 +115,8 @@ export default {
       try {
         const response = await API.starshipPrev(url)
         this.starships = response.data
+        let o = this.starships.previous.split("=")
+        this.page = o[1]
         this.loading = false
       } catch (error) {
         console.log(error)
