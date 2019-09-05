@@ -42,15 +42,15 @@
         
       </div>
       <p style="font-size: 2rem; font-weight: 500;" v-if="loading">Loading...</p>
-      <p style="font-size: 2rem; font-weight: 500;" v-if="planets.results.length === 0">Empty</p>
-      <div class="pagination" v-if="planets.length === 0">
+      <p style="font-size: 2rem; font-weight: 500;" v-if="planets.results.length === 0 && loading === false">Empty</p>
+      <div class="pagination" v-if="planets">
         <div class="pagination__text">
-          1-10 of {{planets.count}}
+          Page {{page}} of {{planets.count}} Pictures
         </div>
 
         <ul class="pagination__controls">
-          <li class="pagination__arrow" v-if="planets.previous" @click="prev(planets.previous)" ><</li>
-          <li class="pagination__arrow" v-if="planets.next" @click="next(planets.next)">></li>
+          <li class="pagination__arrow" v-if="planets.previous" @click="prev(planets.previous)" ><i class="fas fa-chevron-left"></i></li>
+          <li class="pagination__arrow" v-if="planets.next" @click="next(planets.next)"><i class="fas fa-chevron-right"></i></li>
         </ul>
       </div>    
 
@@ -70,7 +70,8 @@ export default {
     return {
       planets: '',
       loading: false,
-      search: ''
+      search: '',
+      page: 1
     }
   },
   methods: {
@@ -100,6 +101,8 @@ export default {
       try {
         const response = await API.planetNext(url)
         this.planets = response.data
+        let o = this.planets.next.split("=")
+        this.page = o[1] - 1
         this.loading = false
       } catch (error) {
         console.log(error)
@@ -112,6 +115,8 @@ export default {
       try {
         const response = await API.planetPrev(url)
         this.planets = response.data
+        let o = this.planets.previous.split("=")
+        this.page = o[1]
         this.loading = false
       } catch (error) {
         console.log(error)

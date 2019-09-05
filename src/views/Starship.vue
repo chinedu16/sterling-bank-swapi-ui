@@ -42,15 +42,15 @@
         
       </div>
       <p style="font-size: 2rem; font-weight: 500;" v-if="loading">Loading...</p>
-      <p style="font-size: 2rem; font-weight: 500;" v-if="starships.results.length === 0">Empty</p>
-      <div class="pagination" v-if="starships.length === 0">
+      <p style="font-size: 2rem; font-weight: 500;" v-if="starships.results.length === 0 && loading === false">Empty</p>
+      <div class="pagination" v-if="starships">
         <div class="pagination__text">
-          1-10 of {{starships.count}}
+          Page {{page}} of {{starships.count}} Pictures
         </div>
 
         <ul class="pagination__controls">
-          <li class="pagination__arrow" v-if="starships.previous" @click="prev(starships.previous)" ><</li>
-          <li class="pagination__arrow" v-if="starships.next" @click="next(starships.next)">></li>
+          <li class="pagination__arrow" v-if="starships.previous" @click="prev(starships.previous)" ><i class="fas fa-chevron-left"></i></li>
+          <li class="pagination__arrow" v-if="starships.next" @click="next(starships.next)"><i class="fas fa-chevron-right"></i></li>
         </ul>
       </div>    
 
@@ -70,7 +70,8 @@ export default {
     return {
       starships: [],
       loading: false,
-      search: ''
+      search: '',
+      page: 1
     }
   },
   methods: {
@@ -100,6 +101,8 @@ export default {
       try {
         const response = await API.starshipNext(url)
         this.starships = response.data
+        let o = this.starships.next.split("=")
+        this.page = o[1] - 1
         this.loading = false
       } catch (error) {
         console.log(error)
@@ -112,6 +115,8 @@ export default {
       try {
         const response = await API.starshipPrev(url)
         this.starships = response.data
+        let o = this.starships.previous.split("=")
+        this.page = o[1]
         this.loading = false
       } catch (error) {
         console.log(error)
