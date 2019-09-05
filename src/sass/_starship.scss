@@ -1,0 +1,112 @@
+.starships-container, .planets-container {
+  /* width: 85%; */
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  gap: 4rem;
+}
+  
+@media (max-width: 1080px) {
+  .starships-container, .planets-container {
+    grid-template-columns: repeat(2, auto); 
+  }
+}
+
+@media (max-width: 1024px) {
+  .starships-container, .planets-container {
+    grid-template-columns: repeat(1, auto); 
+  }
+}
+@media (min-width: 1560px) {
+  .starships-container, .planets-container {
+    grid-template-columns: repeat(3, auto); 
+  } 
+}
+@media (max-width: 320px) {
+  .starships-container, .planets-container {
+    grid-template-columns: repeat(auto-fit, 30rem); 
+  } 
+}
+@media (max-width: 425px) {
+  .starships-container, .planets-container {
+    grid-template-columns: repeat(1, 34rem); 
+  } 
+}
+
+
+
+
+.starship {
+  width: 36rem;
+  height: 43rem;
+  background-color: #d8d8d8;
+
+  @media (max-width: 1440px) {
+    width: 35rem;
+  }
+  @media (max-width: 375px) {
+    width: 35rem; 
+  }
+  @media (max-width: 320px) {
+    width: 29rem; 
+  }
+  .starship__image {
+    width: 100%;
+    height: 25rem; 
+  }
+  
+  .starship__summary {
+    width: 100%;
+    position: relative;
+    background-color: #f2f2f2;
+    transform: translateX(1rem);
+    height: 17rem;
+    padding: 1.5rem; 
+    .starship__name {
+      font-size: 2rem;
+      margin-bottom: .5rem; 
+    }
+    .starship__description {
+      line-height: 1.5;
+      color: #a9a9af;
+      font-size: 1.4rem; 
+    }
+    .starship__button {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      height: 4rem;
+      width: 15rem;
+      background-color: #d8d8d8;
+      cursor: pointer;
+      transition: all .4s; 
+      &:hover {
+        background-color: black;
+        color: white;
+      }
+    }
+  }
+}
+  
+  
+.starship__main-description {
+  font-size: 1.6rem;
+  line-height: 3; 
+
+  @media (max-width: 620px) {
+    line-height: 2; 
+  } 
+}
+  
+.starship__main-detail {
+  width: 50%;
+  margin-bottom: 10rem;
+  @media (max-width: 620px) {
+    width: 90%; 
+  }
+}
+
+.starship__main-name {
+  font-size: 2.5rem;
+  margin-bottom: 2rem; 
+}

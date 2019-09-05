@@ -1,0 +1,147 @@
+.header {
+  position: relative;
+  height: 65rem;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+
+  @media (max-width: 620px) {
+      height: 35rem; 
+  }
+  .small-logo {
+    width: 11rem;
+    height: 5.3rem; 
+  }
+  .header__bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover; 
+  }
+
+  .header__logo {
+    position: absolute;
+    top: 5rem;
+    left: 5rem;
+    z-index: 10; 
+
+    @media (max-width: 620px) {
+      visibility: hidden; 
+    } 
+  }
+
+  .header__content {
+    color: white;
+    width: 100%;
+    height: 100%;
+    position: relative; 
+
+    .header__content-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%; 
+
+      .header__title {
+        display: flex;
+        padding-bottom: .8rem;
+        border-bottom: 2px solid white;
+        margin-bottom: 2.5rem; 
+
+        @media (max-width: 425px) {
+          flex-direction: column;
+          align-items: center; 
+        }
+
+        .header__title-text {
+          margin-left: 1rem;
+          font-size: 4.1rem;
+          font-weight: 700; 
+        }
+      }
+      .header__title-secondary {
+        width: 47rem;
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 2.5rem; 
+      }
+
+      .header__search-container {
+        display: inline-flex;
+        width: 53%;
+        position: relative;
+        border-radius: 5px;
+        overflow: hidden;
+        border-radius: 0.6rem;
+        height: 53px;
+        background-color: #e8e6e6; 
+
+        @media (max-width: 620px) {
+          width: 80%; 
+        }
+        .header__search-icon {
+          padding: 1.5rem 0 1.5rem 3.5rem;
+          font-size: 2.5rem;
+          color: #757575; 
+        }
+        .header__search-box {
+          flex: 1;
+          border: 0;
+          font-size: 20px;
+          padding: 1.5rem 1.5rem 1.5rem 3.5rem;
+          font-size: 2.25rem;
+          outline: none;
+          background-color: #e8e6e6; 
+        }
+      }
+    }
+  }
+}
+  
+.header__content-starship {
+  display: flex;
+  width: calc(100% - 13rem);
+  position: absolute;
+  bottom: 11rem;
+  margin-left: 13rem;
+  justify-content: space-between; 
+
+  @media (max-width: 425px) {
+    width: 100%;
+    bottom: 1rem;
+    margin-left: 0; 
+  }
+
+  @media (max-width: 425px) {
+    width: 100%;
+    bottom: 1rem;
+    margin-left: 0; 
+  }
+  @media (max-width: 620px) {
+    width: 100%;
+    bottom: 2rem;
+    margin-left: 2rem; 
+  } 
+}  
+    
+.header__starship-name {
+  font-size: 4.5rem;
+  border-right: 3px solid white;
+  border-left: 3px solid white;
+  padding: 1.5rem; 
+
+  @media (max-width: 425px) {
+    font-size: 1.5rem;
+    width: 50%;
+    margin-left: 1rem;
+  }
+
+  @media (max-width: 620px) {
+    font-size: 2.5rem;
+    width: 50%;
+    margin-left: 1rem;
+  }
+}
