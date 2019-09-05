@@ -60,8 +60,8 @@
 
       </div>
       <p style="font-size: 2rem; font-weight: 500;" v-if="loading">Loading...</p>
-      <p style="font-size: 2rem; font-weight: 500;" v-if="characters.results.length === 0">Empty</p>
-      <div class="pagination" v-if="characters.length === 0">
+      <p style="font-size: 2rem; font-weight: 500;" v-if="characters.results.length === 0 && loading === false">Empty</p>
+      <div class="pagination" v-if="characters">
         <div class="pagination__text">
           1-10 of {{characters.count}}
         </div>
