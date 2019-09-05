@@ -52,7 +52,8 @@
   }
   .starship__image {
     width: 100%;
-    height: 25rem; 
+    height: 25rem;
+    object-fit: cover;
   }
   
   .starship__summary {
