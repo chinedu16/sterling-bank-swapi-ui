@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <header class="header">
-      <img class="header__logo small-logo" src="../assets/logo.png" alt="">
+      <img class="header__logo small-logo" src="../assets/logo.png" @click="home" alt="">
       <img src="../assets/hero-banner.jpg" alt="" class="header__bg">
 
       <div class="header__content">
@@ -74,6 +74,9 @@ export default {
     }
   },
   methods: {
+     home: function () {
+      this.$router.push('/')
+    },
     details: function () {
       this.$router.push({path: 'starship-details'})
     },

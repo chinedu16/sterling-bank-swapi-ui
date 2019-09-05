@@ -1,7 +1,7 @@
 <template>
   <div class="starship-1">
     <header class="header">
-      <img class="header__logo small-logo" src="../assets/logo.png" alt="">
+      <img class="header__logo small-logo" src="../assets/logo.png" @click="home" alt="">
       <img src="../assets/character-2.jpg" alt="" class="header__bg">
 
       <div class="header__content">
@@ -83,6 +83,11 @@ export default {
   data: function () {
     return {
       details: ''
+    }
+  },
+  methods: {
+     home: function () {
+      this.$router.push('/')
     }
   },
   created () {
