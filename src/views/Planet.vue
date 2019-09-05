@@ -63,7 +63,6 @@
 </template>
 
 <script>
-import Header from '../components/Header'
 import API from '../api/index.js'
 export default {
   name: 'Starship',
@@ -73,9 +72,6 @@ export default {
       loading: false,
       search: ''
     }
-  },
-  components: {
-    Header
   },
   methods: {
     details: function () {

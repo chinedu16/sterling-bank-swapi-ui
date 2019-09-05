@@ -114,16 +114,7 @@ export default {
         console.log(error)
         this.loading = false
       }
-    },
-    async search () {
-      this.loading = true
-      try {
-        const response = await API.starshipSearch(this.search)
-        console.log(response)
-      } catch (error) {
-        console.log(error)
-      }
-    },
+    }
   },
   created () {
     this.listStarship()

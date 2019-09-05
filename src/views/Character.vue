@@ -31,8 +31,9 @@
       <div class="filters">
         <div class="form-group">
           <label for="gender" class="form-label">filter</label>
-          <select name="gender" id="">
-            <option value="male" selected>male</option>
+          <select name="gender" id="" v-model="gender">
+            <option value="">select</option>
+            <option value="male">male</option>
             <option value="female">female</option>
           </select>
         </div>
@@ -81,12 +82,13 @@
 <script>
 import API from '../api/index.js'
 export default {
-  name: 'About',
+  name: 'characters',
   data: function () {
     return {
-      characters: '',
+      characters: [],
       loading: false,
-      search: ''
+      search: '',
+      gender: ''
     }
   },
   
@@ -133,6 +135,18 @@ export default {
   created () {
     this.listCharacter()
   },
+  // computed: {
+  //   filteredPeople: function() {
+  //     if (this.gender === "") {
+  //       console.log('jghgfgh')
+  //       return this.characters.results;
+  //     } else {
+  //       return this.characters.results.filter(function(person) {
+  //         return person.gender === this.gender
+  //       });
+  //     }
+  //   },
+  // },
   watch: {
     search: async function () {
       this.loading = true
