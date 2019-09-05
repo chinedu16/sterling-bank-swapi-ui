@@ -25,7 +25,7 @@
             <p class="starship__name">{{starships[1].name}}</p>
             <p class="starship__description">The {{starships[1].name}} is a {{starships[1].model}}, manufactured by the {{starships[1].manufacturer}}.</p>
 
-            <button class="starship__button">Read More &nbsp; &rarr; </button>
+            <button class="starship__button" @click="shipDetail(starships[1])">Read More &nbsp; &rarr; </button>
           </div>
         </div>
         <div class="starship">
@@ -35,7 +35,7 @@
             <p class="starship__name">{{starships[2].name}}</p>
             <p class="starship__description">The {{starships[2].name}} is a {{starships[2].model}}, manufactured by the {{starships[2].manufacturer}}.</p>
 
-            <button class="starship__button">Read More &nbsp; &rarr; </button>
+            <button class="starship__button" @click="shipDetail(starships[2])">Read More &nbsp; &rarr; </button>
           </div>
         </div>
 
@@ -46,7 +46,7 @@
             <p class="starship__name">{{starships[3].name}}</p>
             <p class="starship__description">The {{starships[3].name}} is a {{starships[3].model}}, manufactured by the {{starships[3].manufacturer}}.</p>
 
-            <button class="starship__button">Read More &nbsp; &rarr; </button>
+            <button class="starship__button" @click="shipDetail(starships[3])">Read More &nbsp; &rarr; </button>
           </div>
         </div>
 
@@ -57,7 +57,7 @@
             <p class="starship__name">{{starships[4].name}}</p>
             <p class="starship__description">The {{starships[4].name}} is a {{starships[4].model}}, manufactured by the {{starships[4].manufacturer}}.</p>
 
-            <button class="starship__button">Read More &nbsp; &rarr; </button>
+            <button class="starship__button" @click="shipDetail(starships[4])">Read More &nbsp; &rarr; </button>
           </div>
         </div>
 
@@ -68,7 +68,7 @@
             <p class="starship__name">{{starships[5].name}}</p>
             <p class="starship__description">The {{starships[5].name}} is a {{starships[5].model}}, manufactured by the {{starships[5].manufacturer}}.</p>
 
-            <button class="starship__button">Read More &nbsp; &rarr; </button>
+            <button class="starship__button" @click="shipDetail(starships[5])">Read More &nbsp; &rarr; </button>
           </div>
         </div>
 

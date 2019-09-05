@@ -8,6 +8,16 @@ async function listStarship () {
   const response = await axios.get(`${baseUrl}/starships/`)
   return response
 }
+
+async function starshipNext (url) {
+  const response = await axios.get(url)
+  return response
+}
+
+async function starshipPrev (url) {
+  const response = await axios.get(url)
+  return response
+}
 // async function logIn (username, password) {
 //   const response = await axios.post(`${baseUrl}/login`, { username, password })
 //   return response
@@ -309,7 +319,9 @@ async function listStarship () {
 // }
 
 export default {
-  listStarship
+  listStarship,
+  starshipNext,
+  starshipPrev
   // loadEntities,
   // logIn,
 
