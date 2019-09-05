@@ -25,95 +25,27 @@
       </div>
 
       <div class="characters-container">
-        <div class="character">
+        <div class="character" v-for="character in characters.results" :key="character.created">
           <img src="../assets/character-1.jpg" alt="" class="character__image">
 
           <div class="character__summary">
-            <p class="character__name">Luke Skywalker</p>
+            <p class="character__name">{{character.name}}</p>
             <p class="character__subtitle">Son of Anakin</p>
-            <p class="character__detail">Anakin Skywalker, a Force-sensitive human male, was a legendary Jedi master who fought in the Galactic Civil War during the reign of the Galactic empire...<span class="button__inline-readmore" @click="details">Read More</span></p>
+            <p class="character__detail">{{character.name}}, a Force-sensitive creature, birthed in the year {{character.birth_year}}, 
+              Description include a {{character.hair_color}} hair, with {{character.eye_color}} eyes. {{characters.name}} is {{characters.skin_color}}...<span class="button__inline-readmore" @click="details(character)">Read More</span></p>
           </div>
         </div>
 
-        <div class="character">
-          <img src="../assets/character-1.jpg" alt="" class="character__image">
-
-          <div class="character__summary">
-            <p class="character__name">Luke Skywalker</p>
-            <p class="character__subtitle">Son of Anakin</p>
-            <p class="character__detail">Anakin Skywalker, a Force-sensitive human male, was a legendary Jedi master who fought in the Galactic Civil War during the reign of the Galactic empire...<span class="button__inline-readmore">Read More</span></p>
-          </div>
-        </div>
-
-        <div class="character">
-          <img src="../assets/character-3.jpg" alt="" class="character__image">
-
-          <div class="character__summary">
-            <p class="character__name">Luke Skywalker</p>
-            <p class="character__subtitle">Son of Anakin</p>
-            <p class="character__detail">Anakin Skywalker, a Force-sensitive human male, was a legendary Jedi master who fought in the Galactic Civil War during the reign of the Galactic empire...<span class="button__inline-readmore">Read More</span></p>
-          </div>
-        </div>
-
-        <div class="character">
-          <img src="../assets/character-3.jpg" alt="" class="character__image">
-
-          <div class="character__summary">
-            <p class="character__name">Luke Skywalker</p>
-            <p class="character__subtitle">Son of Anakin</p>
-            <p class="character__detail">Anakin Skywalker, a Force-sensitive human male, was a legendary Jedi master who fought in the Galactic Civil War during the reign of the Galactic empire...<span class="button__inline-readmore">Read More</span></p>
-          </div>
-        </div>
-
-        <div class="character">
-          <img src="../assets/character-1.jpg" alt="" class="character__image">
-
-          <div class="character__summary">
-            <p class="character__name">Luke Skywalker</p>
-            <p class="character__subtitle">Son of Anakin</p>
-            <p class="character__detail">Anakin Skywalker, a Force-sensitive human male, was a legendary Jedi master who fought in the Galactic Civil War during the reign of the Galactic empire...<span class="button__inline-readmore">Read More</span></p>
-          </div>
-        </div>
-
-        <div class="character">
-          <img src="../assets/character-1.jpg" alt="" class="character__image">
-
-          <div class="character__summary">
-            <p class="character__name">Luke Skywalker</p>
-            <p class="character__subtitle">Son of Anakin</p>
-            <p class="character__detail">Anakin Skywalker, a Force-sensitive human male, was a legendary Jedi master who fought in the Galactic Civil War during the reign of the Galactic empire...<span class="button__inline-readmore">Read More</span></p>
-          </div>
-        </div>
-
-        <div class="character">
-          <img src="../assets/character-2.jpg" alt="" class="character__image">
-
-          <div class="character__summary">
-            <p class="character__name">Luke Skywalker</p>
-            <p class="character__subtitle">Son of Anakin</p>
-            <p class="character__detail">Anakin Skywalker, a Force-sensitive human male, was a legendary Jedi master who fought in the Galactic Civil War during the reign of the Galactic empire...<span class="button__inline-readmore">Read More</span></p>
-          </div>
-        </div>
-
-        <div class="character">
-          <img src="../assets/character-2.jpg" alt="" class="character__image">
-
-          <div class="character__summary">
-            <p class="character__name">Luke Skywalker</p>
-            <p class="character__subtitle">Son of Anakin</p>
-            <p class="character__detail">Anakin Skywalker, a Force-sensitive human male, was a legendary Jedi master who fought in the Galactic Civil War during the reign of the Galactic empire...<span class="button__inline-readmore">Read More</span></p>
-          </div>
-        </div>
       </div>
-
-      <div class="pagination">
+      <p style="font-size: 2rem; font-weight: 500;" v-if="loading">Loading...</p>
+      <div class="pagination" v-if="characters">
         <div class="pagination__text">
-          1-10 of 50
+          1-10 of {{characters.count}}
         </div>
 
-        <ul class="pagination__controls">
-          <li class="pagination__arrow"></li>
-          <li class="pagination__arrow"></li>
+        <ul class="pagination__controls" >
+          <li class="pagination__arrow" v-if="characters.previous" @click="prev(characters.previous)"><</li>
+          <li class="pagination__arrow" v-if="characters.next" @click="prev(characters.next)">></li>
         </ul>
       </div>
     </main>
@@ -126,20 +58,60 @@
 
 <script>
 import Header from '../components/Header'
-
+import API from '../api/index.js'
 export default {
   name: 'About',
   data: function () {
     return {
+      characters: '',
+      loading: false
     }
   },
   components: {
     Header
   },
   methods: {
-    details:  function () {
-    this.$router.push({path: '/character-details'})
+    async listCharacter () {
+      this.loading = true
+      try {
+        const response = await API.listCharacter()
+        this.characters = response.data
+        this.loading = false
+      } catch (error) {
+        console.log(error)
+        this.loading = false
+      }
+    },
+    details:  function (param) {
+      this.$router.push({name: 'character-details', params: param})
+    },
+    async next (url) {
+      this.characters.results = ''
+      this.loading = true
+      try {
+        const response = await API.characterNext(url)
+        this.characters = response.data
+        this.loading = false
+      } catch (error) {
+        console.log(error)
+        this.loading = false
+      }
+    },
+    async prev (url) {
+      this.characters.results = ''
+      this.loading = true
+      try {
+        const response = await API.characterPrev(url)
+        this.characters = response.data
+        this.loading = false
+      } catch (error) {
+        console.log(error)
+        this.loading = false
+      }
     }
+  },
+  created () {
+    this.listCharacter()
   }
 }
 </script>

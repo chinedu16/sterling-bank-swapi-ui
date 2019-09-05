@@ -112,19 +112,10 @@
           <img src="../assets/character-1.jpg" alt="" class="character__image">
 
           <div class="character__summary">
-            <p class="character__name">Luke Skywalker</p>
+            <p class="character__name">{{characters[0].name}}</p>
             <p class="character__subtitle">Son of Anakin</p>
-            <p class="character__detail">Anakin Skywalker, a Force-sensitive human male, was a legendary Jedi master who fought in the Galactic Civil War during the reign of the Galactic empire...<span class="button__inline-readmore">Read More</span></p>
-          </div>
-        </div>
-        
-        <div class="character">
-          <img src="../assets/character-1.jpg" alt="" class="character__image">
-
-          <div class="character__summary">
-            <p class="character__name">Luke Skywalker</p>
-            <p class="character__subtitle">Son of Anakin</p>
-            <p class="character__detail">Anakin Skywalker, a Force-sensitive human male, was a legendary Jedi master who fought in the Galactic Civil War during the reign of the Galactic empire...<span class="button__inline-readmore">Read More</span></p>
+            <p class="character__detail">{{characters[0].name}}, a Force-sensitive creature, birthed in the year {{characters[0].birth_year}}, 
+              Description include a {{characters[0].hair_color}} hair, with {{characters[0].eye_color}} eyes. {{characters[0].name}} is {{characters[0].skin_color}}...<span @click="characterDetail(characters[0])" class="button__inline-readmore">Read More</span></p>
           </div>
         </div>
 
@@ -132,9 +123,10 @@
           <img src="../assets/character-1.jpg" alt="" class="character__image">
 
           <div class="character__summary">
-            <p class="character__name">Luke Skywalker</p>
+            <p class="character__name">{{characters[1].name}}</p>
             <p class="character__subtitle">Son of Anakin</p>
-            <p class="character__detail">Anakin Skywalker, a Force-sensitive human male, was a legendary Jedi master who fought in the Galactic Civil War during the reign of the Galactic empire...<span class="button__inline-readmore">Read More</span></p>
+            <p class="character__detail">{{characters[1].name}}, a Force-sensitive creature, birthed in the year {{characters[1].birth_year}}, 
+              Description include a {{characters[1].hair_color}} hair, with {{characters[1].eye_color}} eyes. {{characters[1].name}} is {{characters[1].skin_color}}...<span @click="characterDetail(characters[1])" class="button__inline-readmore">Read More</span></p>
           </div>
         </div>
 
@@ -142,11 +134,24 @@
           <img src="../assets/character-1.jpg" alt="" class="character__image">
 
           <div class="character__summary">
-            <p class="character__name">Luke Skywalker</p>
+            <p class="character__name">{{characters[2].name}}</p>
             <p class="character__subtitle">Son of Anakin</p>
-            <p class="character__detail">Anakin Skywalker, a Force-sensitive human male, was a legendary Jedi master who fought in the Galactic Civil War during the reign of the Galactic empire...<span class="button__inline-readmore">Read More</span></p>
+            <p class="character__detail">{{characters[2].name}}, a Force-sensitive creature, birthed in the year {{characters[2].birth_year}}, 
+              Description include a {{characters[2].hair_color}} hair, with {{characters[2].eye_color}} eyes. {{characters[2].name}} is {{characters[2].skin_color}}...<span @click="characterDetail(characters[2])" class="button__inline-readmore">Read More</span></p>
           </div>
         </div>
+
+        <div class="character">
+          <img src="../assets/character-1.jpg" alt="" class="character__image">
+
+          <div class="character__summary">
+            <p class="character__name">{{characters[3].name}}</p>
+            <p class="character__subtitle">Son of Anakin</p>
+            <p class="character__detail">{{characters[3].name}}, a Force-sensitive creature, birthed in the year {{characters[3].birth_year}}, 
+              Description include a {{characters[3].hair_color}} hair, with {{characters[3].eye_color}} eyes. {{characters[3].name}} is {{characters[3].skin_color}}...<span @click="characterDetail(characters[3])" class="button__inline-readmore">Read More</span></p>
+          </div>
+        </div>
+
       </div>
 
       <div class="button__view-more" @click="character">
@@ -167,7 +172,8 @@ export default {
   name: 'Home',
   data: function () {
     return {
-      starships: ''
+      starships: '',
+      characters: ''
     }
   },
   components: {
@@ -188,12 +194,24 @@ export default {
         console.log(error)
       }
     },
+    async listCharacter () {
+      try {
+        const response = await API.listCharacter()
+        this.characters = response.data.results
+      } catch (error) {
+        console.log(error)
+      }
+    },
     shipDetail: function (param) {
       this.$router.push({name: 'starship-details', params: param})
+    },
+    characterDetail: function (param) {
+      this.$router.push({name: 'character-details', params: param})
     }
   },
   created () {
     this.listStarship()
+    this.listCharacter()
   }
   
 }

@@ -21,7 +21,7 @@
         
       </div>
       <p style="font-size: 2rem; font-weight: 500;" v-if="loading">Loading...</p>
-      <div class="pagination">
+      <div class="pagination" v-if="starships">
         <div class="pagination__text">
           1-10 of {{starships.count}}
         </div>

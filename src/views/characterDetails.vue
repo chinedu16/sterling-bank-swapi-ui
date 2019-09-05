@@ -1,11 +1,29 @@
 
 <template>
   <div class="starship-1">
-    <Header></Header>
+    <header class="header">
+      <img class="header__logo small-logo" src="../assets/logo.png" alt="">
+      <img src="../assets/character-2.jpg" alt="" class="header__bg">
+
+      <div class="header__content">
+        <div class="header__content-starship">
+          <div class="header__starship-name">
+            {{details.name}}
+          </div>
+
+          <div class="header__pagination">
+            <ul class="header__pagination-controls">
+              <li class="header__pagination-arrow"></li>
+              <li class="header__pagination-arrow"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
 
     <main class="main">
       <div class="starship__main-detail">
-        <h2 class="starship__main-name">Correllian Scout</h2>
+        <h2 class="starship__main-name">{{details.name}}</h2>
 
         <p class="starship__main-description">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, sapiente culpa possimus consectetur maxime veniam dolorem et itaque laboriosam rem fuga voluptatem temporibus sed, mollitia aliquid. Officia ipsa minima velit.
@@ -32,7 +50,7 @@
           <img src="../assets/character-1.jpg" class="starship__image">
 
           <div class="starship__summary">
-            <p class="starship__name">Ghost</p>
+            <p class="starship__name">Chinedu Ohagwu</p>
             <p class="starship__description">The Ghost is a modified VCX-100 light freighter, manufactured by the Corelian Engineering Corporation.</p>
 
             <button class="starship__button">Read More &nbsp; &rarr; </button>
@@ -43,7 +61,7 @@
             <img src="../assets/character-2.jpg" class="starship__image">
   
             <div class="starship__summary">
-              <p class="starship__name">Ghost</p>
+              <p class="starship__name">{{details.name}}</p>
               <p class="starship__description">The Ghost is a modified VCX-100 light freighter, manufactured by the Corelian Engineering Corporation.</p>
   
               <button class="starship__button">Read More &nbsp; &rarr; </button>
@@ -76,10 +94,17 @@ export default {
   name: 'starshipDetails',
   data: function () {
     return {
+      details: ''
     }
   },
   components: {
     Header
+  },
+  created () {
+    this.details = this.$route.params
+    if (!this.$route.params.created) {
+      this.$router.push({name: 'character'})
+    }
   }
   
 }
